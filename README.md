@@ -20,5 +20,3 @@ Smooth Scrolling & Transitions — Enhances the browsing experience.
 
 
 
-## 📂 **Project Structure**
-
