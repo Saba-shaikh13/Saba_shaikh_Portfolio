@@ -1,36 +1,29 @@
+document.addEventListener("DOMContentLoaded", function () {
 
-window.addEventListener("scroll", function() {
-  const skills = document.querySelectorAll(".skill-fill");
-  const triggerBottom = window.innerHeight * 0.85;
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-  skills.forEach(skill => {
-    const skillTop = skill.getBoundingClientRect().top;
-    if (skillTop < triggerBottom) {
-      skill.style.width = skill.style.getPropertyValue("--width");
-    }
-  });
+anchor.addEventListener("click", function (e) {
+
+e.preventDefault();
+
+document.querySelector(this.getAttribute("href")).scrollIntoView({
+behavior: "smooth"
 });
 
+});
 
-  const fadeElements = document.querySelectorAll("[data-aos]");
-  fadeElements.forEach(el => {
-    el.style.opacity = 0;
-    el.style.transition = "opacity 1s ease";
-  });
+});
 
-  window.addEventListener("scroll", () => {
-    fadeElements.forEach(el => {
-      const pos = el.getBoundingClientRect().top;
-      if (pos < window.innerHeight - 100) {
-        el.style.opacity = 1;
-      }
-    });
-  });
+// Contact form message
+document.getElementById('contactForm').addEventListener('submit', function(e){
 
+e.preventDefault();
 
-// Contact form popup
-document.getElementById('contactForm').addEventListener('submit', e => {
-  e.preventDefault();
-  alert('Message sent successfully!');
-  e.target.reset();
+alert('Message sent successfully!');
+
+this.reset();
+
+});
+
 });
